@@ -2,6 +2,7 @@ body{
     color: green;
     text-align: center;
     font-family: Arial;
+    background-color: greenyellow;
 }
 .cont{
     border: 10px solid red;
