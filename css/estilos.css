@@ -7,3 +7,9 @@ body{
 .cont{
     border: 10px solid red;
 }
+footer{
+    font-family: Arial;
+    color: aliceblue;
+    border: 5px solid blueviolet;
+    background-color: black;
+}
