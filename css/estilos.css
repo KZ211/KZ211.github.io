@@ -1,3 +1,8 @@
+h1{
+    border: 5px solid blueviolet;
+    font-family: Arial;
+    margin-bottom: 0px;
+}
 body{
     color: green;
     text-align: center;
