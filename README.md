@@ -1,6 +1,6 @@
 # CursoDeGitYGithub
 
-###Dedicandole lo justo y necesario para continuar aprendiendo.
+<h1>Dedicandole lo justo y necesario para continuar aprendiendo.<h1/>
 
 ###### Toma un cafecito para la espera de un buen programador ☕😄
 
