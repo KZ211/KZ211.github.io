@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día Mamá</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .card {
+            width: 90vw;
+            height: 70vh;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        .card.open .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-front {
+            background-color: #ff9999;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .card-front h1 {
+	    border:1px black solid;
+	    padding: 50px 50px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .card-front img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+        .card-back {
+            background-color: #fff;
+            transform: rotateY(180deg);
+            overflow: hidden;
+        }
+        .carousel {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .carousel-item img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .carousel-item p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .final-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6666;
+        }
+        .nav-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            transition: background-color 0.3s;
+        }
+        .nav-dot.active {
+            background-color: #ff6666;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            opacity: 0;
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        .restart-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">
+                <h1>Feliz Día Mamá</h1>
+                <img src="https://images.vexels.com/content/290157/preview/flowers-leaves-line-art-84eeb2.png" alt="Imagen de portada">
+            </div>
+            <div class="card-back">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="https://scontent.ffdo1-1.fna.fbcdn.net/v/t1.6435-9/116367553_3373019846088746_2342531932236627058_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHAjvzFdO_ftqh7B4ItBLZXwjscnnx7tt3COxyefHu23eezK4fKL7OdHv3Zatg1xtLaQuIk0RqVB2dhg77Fi0pa&_nc_ohc=5UyQPUqg88YQ7kNvgExU65B&_nc_ht=scontent.ffdo1-1.fna&_nc_gid=Asu7sZRcYfMekEhcsX6ZnxM&oh=00_AYAmfWK0F27bTgStA3Nu8CXGcR0ESF6zLoZWuMGrSrah_A&oe=673A3AAA" alt="Imagen 1">
+                        <p>Gracias por tu amor incondicional</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://scontent.ffdo1-1.fna.fbcdn.net/v/t1.6435-9/75543652_2727113180679419_7823622678756982784_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeENKRTPRRDiPLzZ00N_qmTrIaWj7XgF_3khpaPteAX_eZ0pLLCW-rNZAWXebg9gqsTlyhgdpL01FS3nZb5HDBx6&_nc_ohc=ylyu9hBm7B4Q7kNvgFIq6K0&_nc_ht=scontent.ffdo1-1.fna&_nc_gid=ASCGyYLSMD-5sdss9o22YcD&oh=00_AYCypXw8Sv24OLv2PdLFiPHLa9koFciXO5wsgj3BjJzTgQ&oe=673A2930" alt="Imagen 2">
+                        <p>Eres nuestro ejemplo a seguir</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://scontent.ffdo1-1.fna.fbcdn.net/v/t1.6435-9/72681433_2719006704823400_5422008251099119616_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeEG2cK3Ki4Fo7QfCKi8bBz1O57aebvu1p87ntp5u-7Wn7pJl4-33p9xNzS5QC-VEGki_wqm5MjyPjkqC3wcA4N4&_nc_ohc=mFUwyUMfJwgQ7kNvgHuJcMi&_nc_ht=scontent.ffdo1-1.fna&_nc_gid=AqYczyplVGPeu4xD5iXw9UV&oh=00_AYBzOp-_Yg-mtPbUZWmCsya_GRCH5IU_paqj3mYzW-A2Mg&oe=673A22D6" alt="Imagen 3">
+                        <p>Tu fortaleza nos inspira cada día</p>
+                    </div>
+                    <div class="carousel-item">
+			<img src="https://scontent.ffdo1-1.fna.fbcdn.net/v/t39.30808-6/361584471_6713365765387454_1974374504996851225_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGmE-ksk7lXf1DSNiR4zX1CNIP0t4Ur61U0g_S3hSvrVbQ5Xr6tblCdBMAWNc2fEWBo79DMO5WTqHADVnEK9u3M&_nc_ohc=7iLnkJEJGk8Q7kNvgGWLr-Y&_nc_ht=scontent.ffdo1-1.fna&_nc_gid=A-yGi7qxLVuuk8enQImlbla&oh=00_AYDgSeXzPh_blTH3rW8BQHQbMj4vUBWGIum4G1_HLRpoJQ&oe=67186AF3" alt="Imagen 3">
+                        <p class="final-message">Te amamos mamá,<br>gracias por todo</p>
+                    </div>
+                </div>
+                <div class="nav-dots"></div>
+                <button class="restart-button" style="display: none;">↺</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const card = document.querySelector('.card');
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const navDots = document.querySelector('.nav-dots');
+        const restartButton = document.querySelector('.restart-button');
+        let currentIndex = 0;
+        let isLastSlide = false;
+
+        // Crear puntos de navegación
+        items.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('nav-dot');
+            if (index === 0) dot.classList.add('active');
+            navDots.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.nav-dot');
+
+        card.addEventListener('click', () => {
+            card.classList.toggle('open');
+        });
+
+        function showSlide(index) {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            isLastSlide = index === items.length - 1;
+            if (isLastSlide) {
+                createConfetti();
+                restartButton.style.display = 'flex';
+            } else {
+                restartButton.style.display = 'none';
+            }
+        }
+
+        function nextSlide() {
+            if (!isLastSlide) {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+        }
+
+        // Cambiar slide cada 5 segundos para la primera imagen y 3 segundos para las demás
+        let slideInterval = setInterval(() => {
+            if (card.classList.contains('open') && !isLastSlide) {
+                if (currentIndex === 0) {
+                    setTimeout(() => {
+                        nextSlide();
+                    }, 1000);
+                } else {
+                    nextSlide();
+                }
+            }
+        }, 4000);
+
+        // Permitir deslizar para cambiar slides
+        let startX;
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            const diffX = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    nextSlide();
+                } else if (currentIndex > 0) {
+                    currentIndex--;
+                    showSlide(currentIndex);
+                }
+            }
+        });
+
+        function createConfetti() {
+            const confettiCount = 50;
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `confetti-fall ${1 + Math.random() * 2}s linear`;
+                card.appendChild(confetti);
+
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+
+        restartButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = 0;
+            isLastSlide = false;
+            showSlide(currentIndex);
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                if (card.classList.contains('open') && !isLastSlide) {
+                    if (currentIndex === 0) {
+                        setTimeout(() => {
+                            nextSlide();
+                        }, 1000);
+                    } else {
+                        nextSlide();
+                    }
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
